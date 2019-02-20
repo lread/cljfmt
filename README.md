@@ -104,6 +104,41 @@ selectively enabled or disabled:
   true if cljfmt should collapse consecutive blank lines. This will
   convert `(foo)\n\n\n(bar)` to `(foo)\n\n(bar)`. Defaults to true.
 
+* `:align-associative?` -
+  true if cljfmt should align the elements of maps and bindings. Alignment
+  does not add or remove newlines.
+
+  This
+  ```clojure
+  {:foo 1
+  :barbaz 2}
+  ```
+  will convert to
+  ```clojure
+  {:foo    1
+   :barbaz 2}
+  ```
+  this
+  ```clojure
+  (let [foo 1
+  barbaz 2])
+  ```
+  to
+  ```clojure
+  (let [foo    1
+        barbaz 2])
+  ```
+  and this
+  ```clojure
+  {:foo 1 :b 25 :foobaz 3
+  :f 44 :barbaz :z 8}
+  ```
+  to
+  ```clojure
+  {:foo 1  :b      25 :foobaz 3
+   :f   44 :barbaz 7  :z      8}
+  ```
+  Defaults to true.
 
 You can also configure the behavior of cljfmt:
 
@@ -138,6 +173,20 @@ You can also configure the behavior of cljfmt:
   ```clojure
   :cljfmt {:indents ^:replace {#".*" [[:inner 0]]}}
   ```
+
+* `:alignments` -
+  a map of var symbols to binding alignment rules, i.e. `{symbol [& indexes]}`
+
+  The zero-based `indexes` lists the form arguments to align. Only vector
+  arguments are aligned.
+
+  [Defaults](cljfmt/resources/cljfmt/alignments.clj) align
+  only argument 0, but you are free to specify your own customizations.
+
+  Unqualified symbols follow the same conventions as `:indents`.
+
+  This configuration does not control alignment of maps, they are always
+  aligned when `align-associative?` is enabled.
 
 * `:alias-map` -
   a map of namespace alias strings to fully qualified namespace

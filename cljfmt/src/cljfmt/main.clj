@@ -148,7 +148,9 @@
    :remove-surrounding-whitespace?  true
    :remove-trailing-whitespace?     true
    :remove-consecutive-blank-lines? true
-   :indents   cljfmt/default-indents
+   :align-associative?              true
+   :indents    cljfmt/default-indents
+   :alignments cljfmt/default-alignments
    :alias-map {}})
 
 (defn merge-default-options [options]
@@ -186,7 +188,10 @@
     :id :insert-missing-whitespace?]
    [nil "--[no-]remove-consecutive-blank-lines"
     :default (:remove-consecutive-blank-lines? default-options)
-    :id :remove-consecutive-blank-lines?]])
+    :id :remove-consecutive-blank-lines?]
+   [nil "--[no-]align-associative"
+    :default (:align-associative? default-options)
+    :id :align-associative?]])
 
 (defn- command-name []
   (or (System/getProperty "sun.java.command") "cljfmt"))

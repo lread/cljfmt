@@ -34,6 +34,10 @@
   #?(:clj  (fn [^String a ^String b] (.contains a b))
      :cljs str/includes?))
 
+(defn in?
+  [coll elm]
+  (some #(= elm %) coll))
+
 (defn- find-all [zloc p?]
   (loop [matches []
          zloc zloc]
@@ -42,11 +46,55 @@
              (zip/next zloc))
       matches)))
 
-(defn- edit-all [zloc p? f]
+(defn- edit [zloc move-fn p? f]
   (loop [zloc (if (p? zloc) (f zloc) zloc)]
-    (if-let [zloc (z/find-next zloc zip/next p?)]
+    (if-let [zloc (z/find-next zloc move-fn p?)]
       (recur (f zloc))
       zloc)))
+
+(defn- edit-all [zloc p? f]
+  (edit zloc zip/next p? f))
+
+(defn- edit-siblings [zloc p? f]
+  (edit zloc z/right p? f))
+
+;; TODO subedit from rewrite-clj (because not yet in rewrite-cljs)
+(defn subzip
+  "Create zipper whose root is the current node."
+  [zloc]
+  (let [zloc' (some-> zloc z/node edn)]
+    (assert zloc' "could not create subzipper.")
+    zloc'))
+
+(defn subedit-node
+  "Apply the given function to the current sub-tree. The resulting
+   zipper will be located on the root of the modified sub-tree."
+  [zloc f]
+  (let [zloc' (f (subzip zloc))]
+    (assert (not (nil? zloc')) "function applied in 'subedit-node' returned nil.")
+    (z/replace zloc (z/root zloc'))))
+
+;; TODO post order traversal  adapted from tinsel (post order traversal is in rewrite-clj but not yet in rewrite-cljs)
+(defn- post-order-bottom-left [zloc]
+  (if-let [d (z/down zloc)]
+    (recur d)
+    zloc))
+
+(defn- post-order-next [zloc]
+  (if (= :end (zloc 1))
+    zloc
+    (if (nil? (z/up zloc))
+      [(zip/node zloc) :end]
+      (or (and (z/right zloc)
+               (post-order-bottom-left (z/right zloc)))
+          (z/up zloc)))))
+
+(defn- edit-all-postwalk [zloc p? f]
+  (let [zloc (post-order-bottom-left zloc)]
+    (loop [zloc (if (p? zloc) (f zloc) zloc)]
+      (if-let [zloc (z/find-next zloc post-order-next p?)]
+        (recur (f zloc))
+        zloc))))
 
 (defn- transform [form zf & args]
   (z/root (apply zf (edn form) args)))
@@ -326,6 +374,145 @@
 (defn remove-trailing-whitespace [form]
   (transform form edit-all trailing-whitespace? zip/remove))
 
+(def default-alignments
+  (read-resource "cljfmt/alignments.clj"))
+
+(defn- whitespace-length [zloc f]
+  (if (whitespace? (f zloc))
+    (n/length (z/node (f zloc)))
+    0))
+
+(defn- multiline-elem? [zloc]
+  (and (zip/branch? zloc)
+       (z/find (subzip zloc) zip/next line-break?)))
+
+(defn- first-elem-after-line-break? [zloc]
+  (and (element? zloc)
+       (z/find zloc zip/prev #(and (line-break? %) (= (z/next %) zloc)))))
+
+(defn- adjust-leading-whitespace [zloc num-spaces]
+  (if (whitespace? (zip/left zloc))
+    (zip/right
+     (zip/replace (zip/left zloc) (whitespace (+ (whitespace-length zloc zip/left) num-spaces))))
+    (zip/insert-left zloc (whitespace num-spaces))))
+
+(defn- adjust-padding-multiline-elem [zloc num-spaces]
+  (subedit-node zloc #(edit-all % first-elem-after-line-break?
+                                (fn [zloc] (adjust-leading-whitespace zloc num-spaces)))))
+
+(defn- adjust-padding-for-multiline-elems [zloc num-spaces]
+  (loop [zloc (adjust-padding-multiline-elem zloc num-spaces)]
+    (let [znext (z/find-next zloc zip/right #(or (element? %)
+                                                 (line-break? %)
+                                                 (multiline-elem? %)))]
+      (if (and znext (not (line-break? znext)))
+        (recur (adjust-padding-multiline-elem znext num-spaces))
+        zloc))))
+
+(defn- min-margin-elem [zloc]
+  (if (multiline-elem? zloc)
+    (reduce min (cons (margin zloc)
+                      (map margin
+                           (-> zloc
+                               subzip
+                               (find-all first-elem-after-line-break?)))))
+    (margin zloc)))
+
+(defn- adjust-padding [zloc num-spaces]
+  (if (zero? num-spaces)
+    zloc
+    (-> zloc
+        (adjust-leading-whitespace num-spaces)
+        (adjust-padding-for-multiline-elems num-spaces))))
+
+(defn- adjust-margin [zloc target-margin]
+  (adjust-padding zloc (- target-margin (min-margin-elem zloc))))
+
+(defn- table-col-ndx[zloc]
+  (and (element? zloc)
+       (count (->> zloc
+                   (iterate zip/left)
+                   (take-while #(and (identity %) (not (line-break? %))))
+                   (filter element?)))))
+
+(defn- align-table-col [zloc target-margin]
+  (let [col-ndx (table-col-ndx zloc)]
+    (edit-siblings zloc
+                   #(= col-ndx (table-col-ndx %))
+                   #(adjust-margin % target-margin))))
+
+(defn- max-margin-table-col [zloc]
+  (let [col-ndx (table-col-ndx zloc)]
+    (reduce max (map #(- (min-margin-elem %) (dec (whitespace-length % zip/left)))
+                     (->> zloc
+                          (iterate z/right)
+                          (take-while identity)
+                          (filter element?)
+                          (filter #(= (table-col-ndx %) col-ndx)))))))
+
+(defn- next-table-col [zloc]
+  (let [target-col (inc (table-col-ndx zloc))]
+    (z/find-next zloc #(= (table-col-ndx %) target-col))))
+
+(defn- table-cols-iterator [zloc]
+  (->> zloc
+       z/down
+       (iterate next-table-col)))
+
+(defn- count-table-cols [zloc]
+  (count (->> zloc
+              table-cols-iterator
+              (take-while identity))))
+
+(defn- elem-at-table-col-ndx [zloc col-ndx]
+  (last (->> zloc
+             table-cols-iterator
+             (take col-ndx))))
+
+(defn- align-child-elems-as-table [zloc]
+  (let [num-cols (count-table-cols zloc)
+        zloc (let [zloc (elem-at-table-col-ndx zloc 1)]
+               (z/up (align-table-col zloc (min-margin-elem zloc))))]
+    (loop [zloc zloc
+           col-ndx 2]
+      (if (<= col-ndx num-cols)
+        (recur (let [zloc (elem-at-table-col-ndx zloc col-ndx)]
+                 (z/up (align-table-col zloc (max-margin-table-col zloc))))
+               (inc col-ndx))
+        zloc))))
+
+(defn- push-out-underhanging-multiline-elems [zloc]
+  (if (multiline-elem? zloc)
+    (z/up
+     (edit-siblings (z/down zloc)
+                    #(> (table-col-ndx %) 1)
+                    #(let [underhang-spaces (- (margin %) (min-margin-elem %))]
+                       (if (pos? underhang-spaces)
+                         (adjust-padding % underhang-spaces)
+                         %))))
+    zloc))
+
+(defn- alignable-binding-config [zloc alignments alias-map]
+  (or (get alignments (fully-qualify-symbol (form-symbol zloc) alias-map))
+      (get alignments (remove-namespace (form-symbol zloc)))))
+
+(defn- alignable-binding? [zloc alignments alias-map]
+  (and
+   (z/vector? zloc)
+   (when-let [arg-ndxs (alignable-binding-config zloc alignments alias-map)]
+     (in? arg-ndxs (dec (index-of zloc))))))
+
+(defn- alignable? [alignments alias-map]
+  (fn [zloc]
+    (and (or (z/map? zloc)
+             (alignable-binding? zloc alignments alias-map))
+         (z/find-next (z/down zloc) zip/next line-break?))))
+
+(defn- align-elements [form alignments alias-map]
+  (-> form
+      (transform edit-all-postwalk (alignable? alignments alias-map) push-out-underhanging-multiline-elems)
+      (transform edit-all-postwalk (alignable? alignments alias-map) align-child-elems-as-table)))
+
 (defn reformat-form
   ([form]
    (reformat-form form {}))
@@ -340,6 +527,9 @@
        (cond-> (:indentation? opts true)
          (reindent (:indents opts default-indents)
                    (:alias-map opts {})))
+       (cond-> (:align-associative? opts true)
+         (align-elements (:alignments opts default-alignments)
+                         (:alias-map opts {})))
        (cond-> (:remove-trailing-whitespace? opts true)
          remove-trailing-whitespace))))
 

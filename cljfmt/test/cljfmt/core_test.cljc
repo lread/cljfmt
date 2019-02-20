@@ -814,6 +814,324 @@
          {:remove-surrounding-whitespace? false})
         "indents properly")))
 
+(deftest test-align-associative
+  (testing "maps"
+    (is (reformats-to?
+         ["{:a 1}"]
+         ["{:a 1}"]))
+    (is (reformats-to?
+         ["{:a       1}"]
+         ["{:a       1}"]))
+    (is (reformats-to?
+         ["{:a}"]
+         ["{:a}"]))
+    (is (reformats-to?
+         ["{}"]
+         ["{}"]))
+    (is (reformats-to?
+         ["{:a 1"
+          ":billy 2}"]
+         ["{:a     1"
+          " :billy 2}"]))
+    (is (reformats-to?
+         ["{:a 1   ; comment 1"
+          "  ; comment 2"
+          ":billy 2}"]
+         ["{:a     1   ; comment 1"
+          "  ; comment 2"
+          " :billy 2}"])
+        "comments are not touched")
+    (is (reformats-to?
+         ["{:a           1"
+          ":billy        2}"]
+         ["{:a     1"
+          " :billy 2}"]))
+    (is (reformats-to?
+         ["{:a 1 :alexandra 3"
+          " :billy 2 :kevin 4}"]
+         ["{:a     1 :alexandra 3"
+          " :billy 2 :kevin     4}"]))
+    (is (reformats-to?
+         ["{:a 1"
+          " :billy}"]
+         ["{:a 1"
+          " :billy}"]))
+    (is (reformats-to?
+         ["{:one          :two"
+          " :three   :four"
+          " :five"
+          " :six :seven      :eight"
+          " :nine :ten :eleven :twelve}"]
+         ["{:one   :two"
+          " :three :four"
+          " :five"
+          " :six   :seven :eight"
+          " :nine  :ten   :eleven :twelve}"]))
+    (is (reformats-to?
+         ["{:a :bob"
+          ":billy(dec 3)}"]
+         ["{:a     :bob"
+          " :billy (dec 3)}"]
+         {:insert-missing-whitespace? false}))
+    (is (reformats-to?
+         ["{    :one"
+          ":two"
+          "         :three"
+          "}"]
+         ["{    :one"
+          "     :two"
+          "     :three"
+          "}"]
+         {:remove-surrounding-whitespace? false
+          :indentation? false}))
+    (is (reformats-to?
+         ["{     :one :two"
+          "  :three :four   }"]
+         ["{     :one   :two"
+          "      :three :four   }"]
+         {:remove-surrounding-whitespace? false
+          :indentation? false}))
+    (is (reformats-to?
+         ["{     :one :two"
+          "                 :three :four   }"]
+         ["{     :one   :two"
+          "      :three :four   }"]
+         {:remove-surrounding-whitespace? false
+          :indentation? false}))
+    (is (reformats-to?
+         ["{:a   (fn[x]   x) :billy :bob"
+          ":b :c :d}"]
+         ["{:a (fn[x]   x) :billy :bob"
+          " :b :c          :d}"]
+         {:remove-surrounding-whitespace? false
+          :insert-missing-whitespace? false}))
+    (is (reformats-to?
+         ["{:a   {:inner   :map  :is  :here} :billy :bob"
+          ":b :c :d}"]
+         ["{:a {:inner :map :is :here} :billy :bob"
+          " :b :c                      :d}"]
+         {:remove-surrounding-whitespace? false
+          :insert-missing-whitespace? false}))
+    (is (reformats-to?
+         ["{:a   {:inner :map"
+          " :is  :here} :billy :bob"
+          ":b :c :d}"]
+         ["{:a {:inner :map"
+          "     :is    :here} :billy :bob"
+          " :b :c             :d}"]
+         {:remove-surrounding-whitespace? false
+          :insert-missing-whitespace? false}))
+    (is (reformats-to?
+         ["{:a :b (fn[z]"
+          "      (fn[y]"
+          "            (fn[z]"
+          "          {:nested :more"
+          "           :deep :here}))) :d"
+          " :aligator :rabbit :horse :walnut}"]
+         ["{:a        :b       (fn[z]"
+          "                   (fn[y]"
+          "                         (fn[z]"
+          "                       {:nested :more"
+          "                        :deep   :here}))) :d"
+          " :aligator :rabbit :horse                 :walnut}"]
+         {:indentation? false
+          :remove-surrounding-whitespace? false
+          :insert-missing-whitespace? false}))
+    (is (reformats-to?
+         ["{:a :b (fn[z]"
+          "        (fn[y]"
+          "          (fn[z]"
+          "            {:nested :more"
+          "             :deep :here}))) :d"
+          " :aligator :rabbit :horse :walnut}"]
+         ["{:a        :b      (fn[z]"
+          "                     (fn[y]"
+          "                       (fn[z]"
+          "                         {:nested :more"
+          "                          :deep   :here}))) :d"
+          " :aligator :rabbit :horse                   :walnut}"]
+         {:remove-surrounding-whitespace? false
+          :insert-missing-whitespace? false}))
+    (is (reformats-to?
+         ["{:a :b           (fn[z]"
+          "                 (fn[y]"
+          "                 (fn[z]"
+          "                 {:nested :more"
+          "                  :deep :here}))) :d"
+          " :aligator :rabbit :horse :walnut}"]
+         ["{:a        :b      (fn[z]"
+          "                   (fn[y]"
+          "                   (fn[z]"
+          "                   {:nested :more"
+          "                    :deep   :here}))) :d"
+          " :aligator :rabbit :horse             :walnut}"]
+         {:indentation? false
+          :remove-surrounding-whitespace? false
+          :insert-missing-whitespace? false}))
+    (is (reformats-to?
+         ["{:a :b    (fn[z]"
+          "      (fn[y]"
+          "    (fn[z]"
+          "  {:nested :more"
+          ":deep :here}))) :d"
+          " :w :x :y :z}"]
+         ["{:a :b         (fn[z]"
+          "           (fn[y]"
+          "         (fn[z]"
+          "       {:nested :more"
+          "        :deep   :here}))) :d"
+          " :w :x :y                 :z}"]
+         {:indentation? false
+          :remove-surrounding-whitespace? false
+          :insert-missing-whitespace? false}))
+    (is (reformats-to?
+         ["       (defn somefunc-one []"
+          "  {:a :billy :c "
+          "      :d  (fn[z]"
+          "      (fn somefunc-two [y]"
+          "    (fn[z]"
+          "  {:nested :more"
+          ":deep :here}))) :e"
+          " :w :x :y :z})"]
+         ["       (defn somefunc-one []"
+          "  {:a :billy             :c"
+          "   :d         (fn[z]"
+          "          (fn somefunc-two [y]"
+          "        (fn[z]"
+          "      {:nested :more"
+          "       :deep   :here}))) :e"
+          "   :w :x                 :y :z})"]
+         {:indentation? false
+          :remove-surrounding-whitespace? false
+          :insert-missing-whitespace? false})
+        "column does not grow to full width of multiline item - maybe it should?")
+    (is (reformats-to?
+         ["       (defn somefunc-one []"
+          "  {:a :billy :c "
+          "      :d  (fn[z]"
+          ""
+          ""
+          "      (fn somefunc-two [y]"
+          ""
+          ""
+          "    (fn[z]"
+          "  {:nested :more"
+          ":deep :here}))) :e"
+          ""
+          ""
+          " :w :x :y :z})"]
+         ["       (defn somefunc-one []"
+          "  {:a :billy             :c"
+          "   :d         (fn[z]"
+          ""
+          ""
+          "          (fn somefunc-two [y]"
+          ""
+          ""
+          "        (fn[z]"
+          "      {:nested :more"
+          "       :deep   :here}))) :e"
+          ""
+          ""
+          "   :w :x                 :y :z})"]
+         {:indentation? false
+          :remove-consecutive-blank-lines? false
+          :remove-surrounding-whitespace? false
+          :insert-missing-whitespace? false})
+        "can handle blank lines")
+    (is (reformats-to?
+         ["    {"
+          "  (ml-one"
+          " one-a        b"
+          "   c)  (ml-two"
+          "   two-d            e"
+          "          f) (ml-three"
+          "        three-g h"
+          "         i) (ml-four"
+          "         four-j            k"
+          "                l)"
+          "    :one :two :three :four"
+          "    }"]
+         ["    {"
+          "  (ml-one"
+          " one-a        b"
+          "   c)     (ml-two"
+          "      two-d            e"
+          "             f) (ml-three"
+          "           three-g h"
+          "            i)       (ml-four"
+          "                  four-j            k"
+          "                         l)"
+          " :one :two :three :four"
+          "    }"]
+         {:indentation? false
+          :remove-consecutive-blank-lines? false
+          :remove-surrounding-whitespace? false
+          :insert-missing-whitespace? false}))
+    (is (reformats-to?
+         ["{:one #_(two) :three"
+          ":four :five}"]
+         ["{:one  #_(two) :three"
+          " :four :five}"])
+        "we do not skip uneval elements"))
+  (testing "bindings"
+    (is (reformats-to?
+         ["(let [a 1"
+          "      billy 2])"]
+         ["(let [a     1"
+          "      billy 2])"]
+         ))
+    (is (reformats-to?
+         ["(test-custom-alignment"
+          " [arg-zero arg"
+          "is ignored]"
+          " [arg-one arg"
+          "is aligned]"
+          " [arg-two arg"
+          "is ignored]"
+          " [arg-three arg"
+          "is aligned])"]
+         ["(test-custom-alignment"
+          " [arg-zero arg"
+          "is ignored]"
+          " [arg-one arg"
+          "  is      aligned]"
+          " [arg-two arg"
+          "is ignored]"
+          " [arg-three arg"
+          "  is        aligned])"]
+         {:alignments {'test-custom-alignment [1 3]}
+          :indentation? false
+          :remove-surrounding-whitespace? false
+          :insert-missing-whitespace? false}))
+    (is (reformats-to?
+         ["(ns example"
+          "  (:require [schema.core :as s]))"
+          ""
+          "(s/defrecord FooBarBaz"
+          "  [foo :- Long"
+          "   barbarbar :-     Int"
+          "   bazbaz :- [s/Str]])"
+          ""
+          "(defrecord Person [these fields"
+          "                   are not aligned])"]
+         ["(ns example"
+          "  (:require [schema.core :as s]))"
+          ""
+          "(s/defrecord FooBarBaz"
+          "  [foo       :- Long"
+          "   barbarbar :- Int"
+          "   bazbaz    :- [s/Str]])"
+          ""
+          "(defrecord Person [these fields"
+          "                   are not aligned])"]
+         {:alignments {'schema.core/defrecord [1]}
+          #?@(:cljs [:alias-map {"s" "schema.core"}])
+          :indentation? false
+          :remove-surrounding-whitespace? false
+          :insert-missing-whitespace? false}
+         ))))
+
 (deftest test-options
   (is (reformats-to?
        ["(foo)"
