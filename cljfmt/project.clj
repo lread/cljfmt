@@ -8,9 +8,9 @@
                  [org.clojure/tools.cli "0.4.2"]
                  [org.clojure/tools.reader "1.3.2"]
                  [com.googlecode.java-diff-utils/diffutils "1.3.0"]
-                 [rewrite-clj "0.6.1"]
-                 [rewrite-cljs "0.4.4"]]
-  :plugins [[lein-cljsbuild "1.1.7"]]
+                 [rewrite-cljc "0df7d6723062995956567b997c490bee8a6641e2"]]
+  :plugins [[lein-cljsbuild "1.1.7"]
+            [reifyhealth/lein-git-down "0.3.6"]]
   :hooks [leiningen.cljsbuild]
   :cljsbuild {:builds
               {"dev" {:source-paths ["src" "test"]
@@ -22,4 +22,6 @@
               :test-commands
               {"dev" ["node" "target/out/tests.js"]}}
   :profiles
-  {:provided {:dependencies [[org.clojure/clojurescript "1.10.520"]]}})
+  {:provided {:dependencies [[org.clojure/clojurescript "1.10.520"]]}}
+  :repositories [["public-github" {:url "git://github.com"}]]
+  :git-down {rewrite-cljc {:coordinates lread/rewrite-cljc-playground}})
