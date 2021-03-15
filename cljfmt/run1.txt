@@ -1,0 +1,1042 @@
+>== compiling bench for v0
+>== running bench for v0
+=warm up=> 3 iterations
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+[], (t/run-all-tests #"cljfmt.core-test"), 3 runs, 2876 msecs
+=run=> 100 iterations
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+[], (t/run-all-tests #"cljfmt.core-test"), 100 runs, 70967 msecs
+>== compiling bench for v1
+>== running bench for v1
+=warm up=> 3 iterations
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+[], (t/run-all-tests #"cljfmt.core-test"), 3 runs, 3522 msecs
+=run=> 100 iterations
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+
+Testing cljfmt.core-test
+
+Ran 12 tests containing 162 assertions.
+0 failures, 0 errors.
+[], (t/run-all-tests #"cljfmt.core-test"), 100 runs, 85576 msecs
